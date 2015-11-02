@@ -1,6 +1,8 @@
 package model;
 
 import java.util.Observable;
+import java.util.List;
+
 
 public class ChessGame extends Observable {
 
@@ -10,22 +12,25 @@ public class ChessGame extends Observable {
 		this.echiquier = new Echiquier();
 	}
 
+	public void init() {
+		this.setChanged();
+		this.notifyObservers(this);
+	}
+
 	@Override
 	public String toString() {
 		return this.getMessage() + this.echiquier.toString();
 	}
 
 	public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
+		boolean move = false;
 		if (this.echiquier.isMoveOk(xInit, yInit, xFinal, yFinal)) {
 			if (this.echiquier.move(xInit, yInit, xFinal, yFinal)) {
 				this.echiquier.switchJoueur();
-				setChanged();
-			    notifyObservers();
-				return true;
-			} else
-				return false;
-		} else
-			return false;
+				move = true;
+			}
+		}
+		return move;
 	}
 
 	public boolean isEnd() {
@@ -40,4 +45,7 @@ public class ChessGame extends Observable {
 		return this.echiquier.getColorCurrentPlayer();
 	}
 
+	public List<PieceIHM> getPiecesIHM() {
+		return this.echiquier.getPiecesIHM();
+	}
 }
