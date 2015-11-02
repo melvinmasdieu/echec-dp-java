@@ -3,26 +3,24 @@ package model;
 import java.util.LinkedList;
 import java.util.List;
 
-
 /**
- * @author francoise.perrin
- * Classe qui permet de retourner des informations sur les pièces
- * en vue d'une utilisation par une IHM
+ * @author francoise.perrin Classe qui permet de retourner des informations sur
+ *         les pièces en vue d'une utilisation par une IHM
  * 
  */
-public  class PieceIHM {
-	 
+public class PieceIHM {
+
 	String type;
 	Couleur couleur;
 	List<Coord> list;
-	
+
 	PieceIHM(String type, Couleur couleur) {
 		this.type = type;
 		this.couleur = couleur;
 		list = new LinkedList<Coord>();
 	}
-	
-	public void add(Coord coord){
+
+	public void add(Coord coord) {
 		list.add(coord);
 	}
 
@@ -47,7 +45,9 @@ public  class PieceIHM {
 		return list;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
