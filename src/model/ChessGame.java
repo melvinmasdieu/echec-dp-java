@@ -30,6 +30,9 @@ public class ChessGame extends Observable {
 				move = true;
 			}
 		}
+		this.setChanged();
+		this.notifyObservers(this);
+		System.out.println(this.getMessage());
 		return move;
 	}
 
