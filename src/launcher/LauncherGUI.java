@@ -25,7 +25,6 @@ public class LauncherGUI {
 
 		ChessGameGUI chessGameGUI = new ChessGameGUI(chessGameControler);
 		chessGame.addObserver(chessGameGUI);
-		chessGame.init();
 		chessGameGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		chessGameGUI.pack();
 		chessGameGUI.setResizable(true);

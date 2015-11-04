@@ -1,7 +1,7 @@
 package model;
 
 import java.util.Observable;
-import java.util.List;
+import java.util.Observer;
 
 
 public class ChessGame extends Observable {
@@ -12,7 +12,9 @@ public class ChessGame extends Observable {
 		this.echiquier = new Echiquier();
 	}
 
-	public void init() {   // fait l'update à la création de l'échiquier pour le créer
+	@Override
+	public void addObserver(Observer o) {   // fait l'update à la création de l'échiquier pour le créer
+		super.addObserver(o);
 		this.setChanged();
 		this.notifyObservers(this.echiquier.getPiecesIHM());
 	}
