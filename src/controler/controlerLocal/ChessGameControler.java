@@ -1,5 +1,6 @@
 package controler.controlerLocal;
 
+import controler.ChessGameControlers;
 import model.*;
 
 public class ChessGameControler implements ChessGameControlers {

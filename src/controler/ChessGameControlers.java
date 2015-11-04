@@ -1,4 +1,4 @@
-package controler.controlerLocal;
+package controler;
 
 import model.*;
 
