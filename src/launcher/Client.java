@@ -1,7 +1,9 @@
-package client;
+package launcher;
 
 
 import controler.controlerLocal.ChessGameControler;
+import input_output.SocketIn;
+import input_output.SocketOut;
 import model.ChessGame;
 import vue.ChessGameGUI;
 
@@ -29,9 +31,9 @@ public class Client {
 
 
 
-            t1 = new Thread(new ClientOut(socket,));   // thread d'émission
+            t1 = new Thread(new SocketOut(socket,));   // thread d'émission
             t1.start();
-            t2 = new Thread(new ClientIn(socket));    // thread de réception
+            t2 = new Thread(new SocketIn(socket));    // thread de réception
             t2.start();
 
             ChessGame chessGame = new ChessGame();
