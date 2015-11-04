@@ -14,7 +14,7 @@ public class ChessGame extends Observable {
 
 	public void init() {
 		this.setChanged();
-		this.notifyObservers(this);
+		this.notifyObservers(this.echiquier.getPiecesIHM());
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class ChessGame extends Observable {
 			}
 		}
 		this.setChanged();
-		this.notifyObservers(this);
+		this.notifyObservers(this.echiquier.getPiecesIHM());
 		System.out.println(this.getMessage());
 		return move;
 	}
@@ -48,7 +48,4 @@ public class ChessGame extends Observable {
 		return this.echiquier.getColorCurrentPlayer();
 	}
 
-	public List<PieceIHM> getPiecesIHM() {
-		return this.echiquier.getPiecesIHM();
-	}
 }

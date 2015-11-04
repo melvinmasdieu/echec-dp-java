@@ -7,7 +7,7 @@ import model.Couleur;
 /**
  * Created by melvin on 04/11/15.
  */
-public class ChessGameControler implements ChessGameControlers {
+public class ChessGameControler implements ChessGameControlers, Runnable {
 
     @Override
     public boolean move(Coord initCoord, Coord finalCoord) {
@@ -27,5 +27,10 @@ public class ChessGameControler implements ChessGameControlers {
     @Override
     public Couleur getColorCurrentPlayer() {
         return null;
+    }
+
+    @Override
+    public void run() {
+
     }
 }
