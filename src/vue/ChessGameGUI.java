@@ -55,7 +55,6 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
             else
                 square.setBackground(i % 2 == 0 ? Color.white : Color.black);
         }
-
     }
 
     @Override

@@ -4,22 +4,20 @@ import controler.ChessGameControlers;
 import model.ChessGame;
 import model.Coord;
 import model.Couleur;
-import java.io.IOException;
 import java.net.*;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by melvin on 04/11/15.
  */
-public class ChessGameControler implements ChessGameControlers, Runnable {
+public class ChessGameControlerServer implements ChessGameControlers, Observer {
 
     private ChessGame chessGame;
-    private ServerSocket socketserver;
-    private Socket socket;
-    private int nbrclient = 1;
 
-    public ChessGameControler(ChessGame chessGame, ServerSocket s) {
+    public ChessGameControlerServer(ChessGame chessGame) {
         this.chessGame = chessGame;
-        socketserver = s;
+        this.chessGame.addObserver(this);
     }
 
     @Override
@@ -43,24 +41,14 @@ public class ChessGameControler implements ChessGameControlers, Runnable {
         return this.chessGame.getColorCurrentPlayer();
     }
 
+    @Override
     public String toString() {
         return this.chessGame.toString();
     }
 
-    public void run() {
-        try {
-            while (true) {
-                socket = socketserver.accept(); // Un client se connecte on l'accepte
-                System.out.println("Le client numéro " + nbrclient + " est connecté !");
-                nbrclient++;
-                socket.close();
-            }
+    @Override
+    public void update(Observable o, Object obj) {
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
-
-
 }
 
