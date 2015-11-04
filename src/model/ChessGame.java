@@ -13,7 +13,7 @@ public class ChessGame extends Observable {
 	}
 
 	@Override
-	public void addObserver(Observer o) {   // fait l'update à la création de l'échiquier pour le créer
+	public void addObserver(Observer o) {   // Surcharge de la fonction addObserver afin de faire un update au début
 		super.addObserver(o);
 		this.setChanged();
 		this.notifyObservers(this.echiquier.getPiecesIHM());
