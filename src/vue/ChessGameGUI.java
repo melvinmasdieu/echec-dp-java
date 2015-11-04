@@ -26,7 +26,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     private int yAdjustment;
     private ChessGameControler chessGameControler;
 
-    public ChessGameGUI(ChessGameControler chessGameControler) {
+    public ChessGameGUI(ChessGameControler chessGameControler) {  // création de l'échiquier
         this.chessGameControler = chessGameControler;
         Dimension boardSize = new Dimension(600, 600);
 
@@ -61,19 +61,19 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     @Override
     public void update(Observable arg0, Object arg1) {
         ChessGame chessGame = (ChessGame) arg0;
-        for (int i = 0; i < 64; i++) {
+        for (int i = 0; i < 64; i++) {  // récupère toutes les cases de l'échiquier (panels)
             JPanel panel = (JPanel) chessBoard.getComponent(i);
-            //panel.removeAll();
+
         }
-        List<PieceIHM> list = chessGame.getPiecesIHM();
+        List<PieceIHM> list = chessGame.getPiecesIHM();  // liste de toutes les pièces
         for (PieceIHM pieceIHM : list) {
             String type = pieceIHM.getTypePiece();
             Couleur couleur = pieceIHM.getCouleur();
             for (Coord coord : pieceIHM.getList()) {
                 JLabel piece = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(type, couleur)));
-                JPanel panel = (JPanel) chessBoard.getComponent((8 * coord.y) + coord.x);
-                panel.removeAll();
-                panel.add(piece);
+                JPanel panel = (JPanel) chessBoard.getComponent((8 * coord.y) + coord.x);  // détermine l'id du panel sur la grille à partir de x et y
+                panel.removeAll();  // vide le panel
+                panel.add(piece);   // met la nouvelle pièce à sa place
             }
         }
         chessBoard.revalidate();
@@ -115,8 +115,8 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     @Override
     public void mousePressed(MouseEvent e) {
         chessPiece = null;
-        Component c = chessBoard.findComponentAt(e.getX(), e.getY());
-        indexStartMove = getComponentId(c);
+        Component c = chessBoard.findComponentAt(e.getX(), e.getY());  // récupère les coordonées de la pièce
+        indexStartMove = getComponentId(c);  // récupère l'id sur l'échiquier
 
         if (c instanceof JPanel)
             return;
@@ -135,16 +135,16 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         if (chessPiece == null)
             return;
 
-        Component c = chessBoard.findComponentAt(e.getX(), e.getY());
+        Component c = chessBoard.findComponentAt(e.getX(), e.getY());  // récupère l'id aux coordonées x et y
         int id = getComponentId(c);
 
-        int xInit = indexStartMove % 8;
-        int yInit = (indexStartMove - xInit) / 8;
+        int xInit = indexStartMove % 8;  // calcul du x initial à partir de l'id de la case
+        int yInit = (indexStartMove - xInit) / 8;  // calcul du y initial à partir de l'id de la case
 
-        int xFinal = id % 8;
-        int yFinal = (id - xFinal)/8;
+        int xFinal = id % 8;  // calcul du x final à partir de l'id de la case
+        int yFinal = (id - xFinal)/8;  // calcul du y final à partir de l'id de la case
 
-        this.chessGameControler.move(new Coord(xInit, yInit), new Coord(xFinal, yFinal));
+        this.chessGameControler.move(new Coord(xInit, yInit), new Coord(xFinal, yFinal));  // appelle la fonction déplacement 
 
         chessPiece.setVisible(false);
     }

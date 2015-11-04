@@ -12,7 +12,7 @@ public class ChessGame extends Observable {
 		this.echiquier = new Echiquier();
 	}
 
-	public void init() {
+	public void init() {   // fait l'update à la création de l'échiquier pour le créer
 		this.setChanged();
 		this.notifyObservers(this);
 	}
@@ -24,15 +24,15 @@ public class ChessGame extends Observable {
 
 	public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
 		boolean move = false;
-		if (this.echiquier.isMoveOk(xInit, yInit, xFinal, yFinal)) {
-			if (this.echiquier.move(xInit, yInit, xFinal, yFinal)) {
-				this.echiquier.switchJoueur();
+		if (this.echiquier.isMoveOk(xInit, yInit, xFinal, yFinal)) { // test si le déplacement est possible
+			if (this.echiquier.move(xInit, yInit, xFinal, yFinal)) { // si oui
+				this.echiquier.switchJoueur();  // change de joueur courant
 				move = true;
 			}
 		}
 		this.setChanged();
-		this.notifyObservers(this);
-		System.out.println(this.getMessage());
+		this.notifyObservers(this);  // update de l'échiquier
+		System.out.println(this.getMessage());  // affichage du message dans la console
 		return move;
 	}
 
