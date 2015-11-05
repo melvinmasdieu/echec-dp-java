@@ -18,20 +18,22 @@ public class Serveur {
 
         try {
             ServerSocket serveurSocket = new ServerSocket();
-            Socket socket = serveurSocket.accept();
+            while(true) {
+                Socket socket = serveurSocket.accept();
+            }
 
             ChessGame model = new ChessGame();
             ChessGameControlerServer controler = new ChessGameControlerServer(model);
-
-            SocketIn socketIn = new SocketIn(socket);
-            Thread tIn = new Thread(socketIn);
-            socketIn.addObserver(controler);
-            tIn.start();
 
             SocketOut socketOut = new SocketOut(socket);
             Thread tOut = new Thread(socketIn);
             model.addObserver(socketOut);
             tOut.start();
+
+            SocketIn socketIn = new SocketIn(socket);
+            Thread tIn = new Thread(socketIn);
+            socketIn.addObserver(controler);
+            tIn.start();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -39,3 +41,4 @@ public class Serveur {
 
     }
 }
+

@@ -4,7 +4,8 @@ import controler.ChessGameControlers;
 import model.ChessGame;
 import model.Coord;
 import model.Couleur;
-import java.net.*;
+
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -48,7 +49,8 @@ public class ChessGameControlerServer implements ChessGameControlers, Observer {
 
     @Override
     public void update(Observable o, Object obj) {
-
+        List<Coord> listCoord = (List<Coord>) obj;
+        move(listCoord.get(0), listCoord.get(1));
     }
 }
 

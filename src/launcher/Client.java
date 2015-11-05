@@ -33,6 +33,7 @@ public class Client {
             ChessGame chessGame = new ChessGame();
             ChessGameControler clientControler = new ChessGameControler(chessGame);
 
+
             ChessGameGUI chessGameGUI = new ChessGameGUI(clientControler);
 
             SocketIn socketIn = new SocketIn(socket);
