@@ -1,7 +1,6 @@
 package vue;
 
 import controler.controlerLocal.ChessGameControler;
-import model.ChessGame;
 import model.Coord;
 import model.Couleur;
 import model.PieceIHM;
@@ -16,7 +15,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener, Observer, GUI{
+public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener, Observer {
 
     private JLayeredPane layeredPane;
     private JPanel chessBoard;
@@ -138,8 +137,9 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         int xFinal = id % 8;  // calcul du x final à partir de l'id de la case
         int yFinal = (id - xFinal)/8;  // calcul du y final à partir de l'id de la case
 
-        this.chessGameControler.move(new Coord(xInit, yInit), new Coord(xFinal, yFinal));  // appelle la fonction déplacement 
+        this.chessGameControler.move(new Coord(xInit, yInit), new Coord(xFinal, yFinal));  // appelle la fonction déplacement
 
+        super.notify();
         chessPiece.setVisible(false);
     }
 
