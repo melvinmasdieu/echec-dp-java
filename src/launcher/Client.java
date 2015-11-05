@@ -31,7 +31,7 @@ public class Client {
 
 
 
-            t1 = new Thread(new SocketOut(socket,));   // thread d'émission
+            t1 = new Thread(new SocketOut(socket));   // thread d'émission
             t1.start();
             t2 = new Thread(new SocketIn(socket));    // thread de réception
             t2.start();
