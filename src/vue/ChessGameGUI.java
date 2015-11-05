@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener, Observer {
+public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener, Observer, GUI{
 
     private JLayeredPane layeredPane;
     private JPanel chessBoard;
