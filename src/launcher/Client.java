@@ -30,7 +30,6 @@ public class Client {
             System.out.println("Connexion établie avec le serveur, authentification :"); // Si le message s'affiche c'est que je suis connecté
 
 
-
             t1 = new Thread(new SocketOut(socket));   // thread d'émission
             t1.start();
             t2 = new Thread(new SocketIn(socket));    // thread de réception

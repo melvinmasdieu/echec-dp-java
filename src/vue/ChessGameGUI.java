@@ -138,7 +138,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         int xFinal = id % 8;  // calcul du x final à partir de l'id de la case
         int yFinal = (id - xFinal)/8;  // calcul du y final à partir de l'id de la case
 
-        this.chessGameControler.move(new Coord(xInit, yInit), new Coord(xFinal, yFinal));  // appelle la fonction déplacement 
+        this.chessGameControler.move(new Coord(xInit, yInit), new Coord(xFinal, yFinal));  // appelle la fonction déplacement
 
         chessPiece.setVisible(false);
     }

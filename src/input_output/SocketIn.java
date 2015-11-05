@@ -26,6 +26,8 @@ public class SocketIn extends Observable implements Runnable  {
                 in = new ObjectInputStream(socket.getInputStream());
                 message = in.readObject();  // objet génerique qui sera casté en fonction de si on est dans le client ou le serveur
                 in.close();
+                setChanged();
+                notifyObservers(message);
             }
 
             catch (IOException e) {
