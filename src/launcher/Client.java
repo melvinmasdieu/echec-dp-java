@@ -2,6 +2,7 @@ package launcher;
 
 
 import controler.controlerLocal.ChessGameControler;
+import controler.controlerResau.ChessGameControlerClient;
 import input_output.SocketIn;
 import input_output.SocketOut;
 import model.ChessGame;
@@ -30,10 +31,7 @@ public class Client {
             socket = new Socket("127.0.0.1",2009);
             System.out.println("Connexion établie avec le serveur, authentification :"); // Si le message s'affiche c'est que je suis connecté
 
-            ChessGame chessGame = new ChessGame();
-            ChessGameControler clientControler = new ChessGameControler(chessGame);
-
-
+            ChessGameControlerClient clientControler = new ChessGameControlerClient ();
             ChessGameGUI chessGameGUI = new ChessGameGUI(clientControler);
 
             SocketIn socketIn = new SocketIn(socket);
@@ -44,8 +42,8 @@ public class Client {
             t2 = new Thread(socketIn);    // thread de réception
             t2.start();
 
-            //chessGameGUI.addObserver(socketOut); à résoudre (peut pas extend 2 trucs -> gui pas observable)
-            socketIn.addObserver(chessGameGUI);
+            clientControler.addObserver(socketOut);  // contrôleur observé par le socketOut
+            socketIn.addObserver(chessGameGUI);      // socketIn observé par la vue
 
         } catch (UnknownHostException e) {
             System.err.println("Impossible de se connecter à l'adresse "+socket.getLocalAddress());

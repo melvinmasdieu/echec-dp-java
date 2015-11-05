@@ -1,5 +1,6 @@
 package vue;
 
+import controler.ChessGameControlers;
 import controler.controlerLocal.ChessGameControler;
 import model.Coord;
 import model.Couleur;
@@ -23,9 +24,9 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     private int indexStartMove;
     private int xAdjustment;
     private int yAdjustment;
-    private ChessGameControler chessGameControler;
+    private ChessGameControlers chessGameControler;
 
-    public ChessGameGUI(ChessGameControler chessGameControler) {
+    public ChessGameGUI(ChessGameControlers chessGameControler) {
         this.chessGameControler = chessGameControler;
         Dimension boardSize = new Dimension(600, 600);
 
