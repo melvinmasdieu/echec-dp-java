@@ -18,6 +18,7 @@ public class ChessGameControlerClient extends Observable implements ChessGameCon
         List<Coord> envoiCoord = new ArrayList();
         envoiCoord.add(initCoord);
         envoiCoord.add(finalCoord);
+        setChanged();
         notifyObservers(envoiCoord);
         return true;
     }

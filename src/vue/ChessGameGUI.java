@@ -58,6 +58,10 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 
     @Override
     public void update(Observable arg0, Object arg1) {
+        for (int i = 0; i < 64; i++) {
+            JPanel panel = (JPanel) chessBoard.getComponent(i);
+            panel.removeAll();
+        }
         List<PieceIHM> list = (List<PieceIHM>) arg1;
         for (PieceIHM pieceIHM : list) {
             String type = pieceIHM.getTypePiece();
@@ -65,7 +69,6 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
             for (Coord coord : pieceIHM.getList()) {
                 JLabel piece = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(type, couleur)));
                 JPanel panel = (JPanel) chessBoard.getComponent((8 * coord.y) + coord.x);  // détermine l'id du panel sur la grille à partir de x et y
-                panel.removeAll();  // vide le panel
                 panel.add(piece);   // met la nouvelle pièce à sa place
             }
         }

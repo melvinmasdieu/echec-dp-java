@@ -24,8 +24,7 @@ public class SocketOut implements Runnable, Observer {
     public SocketOut(Socket socket) {
         this.socket = socket;
         try {
-
-        out = new ObjectOutputStream(socket.getOutputStream());
+            out = new ObjectOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -34,8 +33,6 @@ public class SocketOut implements Runnable, Observer {
 
     @Override
     public void update(Observable o, Object obs) {
-
-
         try {
             message = obs;
             out.writeObject(message);
