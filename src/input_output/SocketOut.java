@@ -43,7 +43,6 @@ public class SocketOut implements Runnable, Observer {
         }
     }
 
-
     public void run() {
 
 

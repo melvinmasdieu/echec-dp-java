@@ -18,7 +18,6 @@ public class ChessGameControlerServer implements ChessGameControlers, Observer {
 
     public ChessGameControlerServer(ChessGame chessGame) {
         this.chessGame = chessGame;
-        this.chessGame.addObserver(this);
     }
 
     @Override

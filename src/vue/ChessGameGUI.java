@@ -1,7 +1,6 @@
 package vue;
 
 import controler.ChessGameControlers;
-import controler.controlerLocal.ChessGameControler;
 import model.Coord;
 import model.Couleur;
 import model.PieceIHM;

@@ -17,16 +17,17 @@ public class Serveur {
     public static void main(String[] args) {
 
         try {
-            ServerSocket serveurSocket = new ServerSocket();
-            while(true) {
-                Socket socket = serveurSocket.accept();
+            ServerSocket serveurSocket = new ServerSocket(2009);
+            Socket socket = null;
+            while (socket == null) {
+                socket = serveurSocket.accept();
             }
 
             ChessGame model = new ChessGame();
             ChessGameControlerServer controler = new ChessGameControlerServer(model);
 
             SocketOut socketOut = new SocketOut(socket);
-            Thread tOut = new Thread(socketIn);
+            Thread tOut = new Thread(socketOut);
             model.addObserver(socketOut);
             tOut.start();
 
