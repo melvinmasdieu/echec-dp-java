@@ -18,13 +18,13 @@ import java.net.UnknownHostException;
 /**
  * Created by melvin on 04/11/15.
  */
-public class Client {
+public class Client implements Runnable{
     public static Socket socket = null;
     public static Thread t1,t2;
 
 
 
-    public static void main(String[] args) {
+    public Client(String num) {
 
         try {
 
@@ -51,15 +51,13 @@ public class Client {
             t2 = new Thread(socketIn);    // thread de réception
             t2.start();
 
-
-
         } catch (UnknownHostException e) {
             System.err.println("Impossible de se connecter à l'adresse "+socket.getLocalAddress());
         } catch (IOException e) {
             System.err.println("Aucun serveur à l'écoute du port "+socket.getLocalPort());
         }
 
-
-
     }
+
+    public void run() {}
 }

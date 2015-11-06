@@ -12,9 +12,9 @@ import java.net.Socket;
 /**
  * Created by melvin on 04/11/15.
  */
-public class Serveur {
+public class Serveur implements Runnable{
 
-    public static void main(String[] args) {
+    public Serveur() {
 
         try {
             ServerSocket serveurSocket = new ServerSocket(2009);
@@ -40,5 +40,7 @@ public class Serveur {
         }
 
     }
+
+    public void run() {}
 }
 
