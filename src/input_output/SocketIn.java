@@ -8,7 +8,7 @@ import java.util.Observable;
 /**
  * Created by melvin on 04/11/15.
  */
-public class SocketIn extends Observable implements Runnable  {
+public class SocketIn extends Observable implements Runnable {
 
     private Socket socket;
     private Object message;
@@ -19,23 +19,22 @@ public class SocketIn extends Observable implements Runnable  {
 
     public void run() {
 
-        while (true) {
 
+        try {
             ObjectInputStream in = null;
-            try {
-                in = new ObjectInputStream(socket.getInputStream());
-                message = in.readObject();  // objet génerique qui sera casté en fonction de si on est dans le client ou le serveur
-                in.close();
-                setChanged();
-                notifyObservers(message);
-            }
+            in = new ObjectInputStream(socket.getInputStream());
+            while (true) {
+                try {
+                    message = in.readObject();  // objet génerique qui sera casté en fonction de si on est dans le client ou le serveur
+                    setChanged();
+                    notifyObservers(message);
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
 
-            catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

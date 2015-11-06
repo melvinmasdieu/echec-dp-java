@@ -139,7 +139,6 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 
         this.chessGameControler.move(new Coord(xInit, yInit), new Coord(xFinal, yFinal));  // appelle la fonction déplacement
 
-        super.notify();
         chessPiece.setVisible(false);
     }
 

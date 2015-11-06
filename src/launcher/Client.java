@@ -43,13 +43,15 @@ public class Client {
             SocketIn socketIn = new SocketIn(socket);
             SocketOut socketOut = new SocketOut(socket);
 
+            clientControler.addObserver(socketOut);  // contrôleur observé par le socketOut
+            socketIn.addObserver(chessGameGUI);      // socketIn observé par la vue
+
             t1 = new Thread(socketOut);   // thread d'émission
             t1.start();
             t2 = new Thread(socketIn);    // thread de réception
             t2.start();
 
-            clientControler.addObserver(socketOut);  // contrôleur observé par le socketOut
-            socketIn.addObserver(chessGameGUI);      // socketIn observé par la vue
+
 
         } catch (UnknownHostException e) {
             System.err.println("Impossible de se connecter à l'adresse "+socket.getLocalAddress());

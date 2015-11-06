@@ -49,7 +49,7 @@ public class ChessGameControlerServer implements ChessGameControlers, Observer {
     @Override
     public void update(Observable o, Object obj) {
         List<Coord> listCoord = (List<Coord>) obj;
-        move(listCoord.get(0), listCoord.get(1));
+        this.move(listCoord.get(0), listCoord.get(1));
     }
 }
 
