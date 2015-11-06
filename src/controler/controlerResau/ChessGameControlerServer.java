@@ -15,9 +15,14 @@ import java.util.Observer;
 public class ChessGameControlerServer implements ChessGameControlers, Observer {
 
     private ChessGame chessGame;
+    private String clientName;
 
     public ChessGameControlerServer(ChessGame chessGame) {
         this.chessGame = chessGame;
+    }
+    
+    public void addClient(String name) {
+        this.clientName = name;
     }
 
     @Override
@@ -49,7 +54,13 @@ public class ChessGameControlerServer implements ChessGameControlers, Observer {
     @Override
     public void update(Observable o, Object obj) {
         List<Coord> listCoord = (List<Coord>) obj;
-        this.move(listCoord.get(0), listCoord.get(1));
+        if (this.clientName == "Client1" && this.getColorCurrentPlayer() == Couleur.BLANC) {
+            this.move(listCoord.get(0), listCoord.get(1));
+        } else if (this.clientName == "Client2" && this.getColorCurrentPlayer() == Couleur.NOIR) {
+            this.move(listCoord.get(0), listCoord.get(1));
+        } else {
+            this.move(listCoord.get(0), listCoord.get(0));
+        }
     }
 }
 

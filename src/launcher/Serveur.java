@@ -24,6 +24,8 @@ public class Serveur {
             while (true) {
                 Socket socket = serveurSocket.accept();
 
+                controler.addClient(clientName);
+
                 SocketOut socketOut = new SocketOut(socket);
                 Thread tOut = new Thread(socketOut);
                 model.addObserver(socketOut);
