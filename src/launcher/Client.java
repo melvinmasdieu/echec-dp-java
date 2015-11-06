@@ -8,6 +8,7 @@ import input_output.SocketOut;
 import model.ChessGame;
 import vue.ChessGameGUI;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -33,6 +34,11 @@ public class Client {
 
             ChessGameControlerClient clientControler = new ChessGameControlerClient ();
             ChessGameGUI chessGameGUI = new ChessGameGUI(clientControler);
+            chessGameGUI.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            chessGameGUI.pack();
+            chessGameGUI.setResizable(true);
+            chessGameGUI.setLocationRelativeTo(null);
+            chessGameGUI.setVisible(true);
 
             SocketIn socketIn = new SocketIn(socket);
             SocketOut socketOut = new SocketOut(socket);

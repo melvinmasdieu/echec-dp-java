@@ -9,7 +9,7 @@ import java.util.List;
  *         les pièces en vue d'une utilisation par une IHM
  * 
  */
-public class PieceIHM {
+public class PieceIHM implements Serializable {
 
 	String type;
 	Couleur couleur;
